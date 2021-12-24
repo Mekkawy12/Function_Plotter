@@ -1,0 +1,91 @@
+<html>
+  <head>
+    <title>Function Plotter</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="index.css" />
+          <script src="https://unpkg.com/function-plot/dist/function-plot.js"></script>
+  </head>
+  <body>
+
+  <div aria-live="polite" aria-atomic="true" class="d-flex justify-content-center align-items-center" style="min-height: 200px;">
+
+  <!-- Then put toasts within -->
+  <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <span>...</span>
+      <strong class="mr-auto">😧Error</strong>
+      <small></small>
+      <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="toast-body">
+      Please use just x, numbers and any of this operators ^*/-+ and you can use all the trigonometric functions.
+    </div>
+  </div>
+</div>
+
+    <form>
+    <div id="inputs">
+      <div class="input-group input-group-lg">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-lg"
+            >Function</span
+          >
+        </div>
+        <input id="Function"
+          type="text"
+          class="form-control"
+          aria-label="Large"
+          aria-describedby="inputGroup-sizing-sm"
+          oninvalid="showHideElement('#plot','hidden')"
+          required
+        />
+      </div>
+      <div class="input-group input-group-sm mb-3 small">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-sm">xMIN</span>
+        </div>
+        <input id="xMin"
+          type="text"
+          class="form-control"
+          aria-label="Small"
+          aria-describedby="inputGroup-sizing-sm"
+          #regex to validate the input
+          pattern="^(-{0,1}\d+\.{0,1}\d*)|^(-{0,1}\.{0,1}\d+)$"
+          oninvalid="this.setCustomValidity('Enter a valid number in xMin');showHideElement('#plot', 'hidden')"
+          onchange="this.setCustomValidity('');"
+          required
+        />
+      </div>
+      <div class="input-group input-group-sm mb-3 small">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-sm">xMAX</span>
+        </div>
+        <input id="xMax"
+          type="text"
+          class="form-control"
+          aria-label="Small"
+          aria-describedby="inputGroup-sizing-sm"
+          pattern="^(-{0,1}\d+\.{0,1}\d*)|^(-{0,1}\.{0,1}\d+)$"
+          oninvalid="this.setCustomValidity('Enter a valid number in xMax');showHideElement('#plot', 'hidden')"
+          onchange="this.setCustomValidity('');"
+          required
+        />
+      </div>
+      <button type="submit" class="btn btn-outline-dark">Plot</button>
+    </div>
+</form>
+
+    <section id="plot">
+    <div id="myFunction"></div>
+  </section>
+  
+    <script src="main.js"></script>
+  </body>
+</html>

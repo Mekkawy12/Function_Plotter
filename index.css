@@ -1,0 +1,30 @@
+body {
+  padding: 70px 0;
+  margin: auto;
+  width: 50%;
+  text-align: center;
+  background-color: beige;
+}
+
+.small {
+  width: 30%;
+  margin: auto;
+  margin-top: 20px;
+}
+
+.input-group-prepend {
+  color: beige !important;
+}
+
+.btn {
+  margin-top: 20px;
+  width: 50%;
+}
+.input-group-text {
+  color: white;
+  background-color: black;
+}
+
+.toast {
+  visibility: hidden;
+}
