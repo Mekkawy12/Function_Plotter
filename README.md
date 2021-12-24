@@ -1,4 +1,4 @@
-# Function_Plotter
+# Function Plotter
 This is a function plotter application, it's based on electronjs,html and javascript.
 I used a function plotter library to plot the function. After the plot shows you can use your mouse to move the plot or zoom out and in.
 # Installation
