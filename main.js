@@ -1,10 +1,12 @@
 //For plotting, I used a Function Plot library
 
 //This is the parameters to use will calling functionPlot
+
 var parameters = {
   target: "#myFunction",
   data: [
     {
+      fn:"sin(x)",
       color: "red",
     },
   ],
@@ -13,6 +15,8 @@ var parameters = {
   xAxis: { domain: [0, 2 * Math.PI] , label: "x-axis" },
 };
 
+//This is a variable to check if the function value is the same is it was when an error happend or whrn it was unvalid
+var fvalueAtError = "";
 
 //Function that does the plotting  
 function plot(fValue,xMin,xMax) {
@@ -46,14 +50,22 @@ document.querySelector("form").addEventListener('submit',(event)=>{
   const fValue = replaceSecCosecCot(document
     .querySelector("#function")
     .value.toLowerCase().replaceAll(' ',''));
-
+  
+  
+  //In here you have to check if the function is valid or not
   try {
+    //In here if the user used the same unvalid value I will throw an error
+    if(fvalueAtError===fValue){
+      throw new Error();
+    }
+    plot(fValue,xMin.value,xMax.value);
     showHideElement(".toast", "hidden");
     showHideElement("#plot", "visible");
-    plot(fValue,xMin.value,xMax.value);
+    
   } catch (error) {
+    fvalueAtError=fValue;
     setToastMessage(
-      "Please use just x, numbers and any of this operators ^*/-+ and you can use all the trigonometric functions in this shape trFunction(...)\
+      "Please use just x, numbers and any of this operators ^/-+ and you can use all the trigonometric functions in this shape trFunction(...)\
       and log(...), sqrt(...) ....."
     );
     showHideElement(".toast", "visible");
